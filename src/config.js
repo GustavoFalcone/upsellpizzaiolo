@@ -1,8 +1,8 @@
 // Configure apenas destinos e integrações oficiais. Nada aqui realiza cobrança por conta própria.
 export const upsellConfig = {
   price: 'R$39,90',
-  acceptUrl: '',
-  declineUrl: '',
+  acceptUrl: 'https://zuckpay.com.br/checkout/fichario-visual-de-pizzas',
+  declineUrl: 'https://entregavelpizza.vercel.app',
   videoUrl: '/video/mini-vsl-upsell-pizza.mp4',
   videoPosterUrl: '/video/mini-vsl-upsell-pizza-poster.jpg',
   accessStatus: 'confirmed',
