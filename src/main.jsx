@@ -4,8 +4,8 @@ import { ArrowDown, ArrowRight, BookOpen, Camera, Check, FileDown, FolderHeart, 
 import { upsellConfig, withTracking } from './config';
 import './styles.css';
 
-const SESSION_KEY = 'pizza-upsell-progress-start-v1';
-const DURATION = 90_000;
+const SESSION_KEY = 'pizza-upsell-progress-start-v2';
+const DURATION = 150_000;
 
 function UpsellProgress() {
   const [progress, setProgress] = useState(0);
@@ -25,8 +25,10 @@ function UpsellProgress() {
     return () => cancelAnimationFrame(frame);
   }, []);
   const verified = upsellConfig.accessStatus === 'processing';
+  const percentage = Math.floor(progress * 100);
   return <section className="progress-section" aria-label="Etapa pós-compra">
     <div className="progress-shell">
+      <div className="progress-topline"><span>ETAPA PÓS-COMPRA</span><strong>{percentage}%</strong></div>
       <div className="progress-copy">
         <span className="progress-mark"><Check size={17} strokeWidth={3} /></span>
         <div>
@@ -34,10 +36,10 @@ function UpsellProgress() {
           <p>{verified ? 'Enquanto isso, temos uma oferta especial para você.' : 'Antes de acessar seu material, confira esta oferta especial.'}</p>
         </div>
       </div>
-      <div className="progress-track" role="img" aria-label="Progresso visual da etapa pós-compra; não representa processamento de pagamento">
-        <div style={{ width: `${8 + progress * 92}%` }} />
+      <div className="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={percentage} aria-label="Progresso visual da apresentação da oferta, não do pagamento">
+        <div style={{ width: `${progress * 100}%` }} />
       </div>
-      <small>Etapa de apresentação da oferta · não representa o processamento do pagamento</small>
+      <small>Progresso visual da apresentação · não indica processamento do pagamento</small>
     </div>
     <a href="#oferta" className="scroll-cue" aria-label="Ver a oferta"><ArrowDown size={18} /></a>
   </section>;
@@ -170,7 +172,7 @@ function UpsellActions() {
 }
 
 function App() {
-  return <><UpsellProgress /><main><UpsellHero /><BenefitChips /><VerticalDemoVideo /><UpsellOffer /></main></>;
+  return <><UpsellProgress /><main><UpsellHero /><VerticalDemoVideo /><BenefitChips /><UpsellOffer /></main></>;
 }
 
 createRoot(document.getElementById('root')).render(<App />);

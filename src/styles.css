@@ -4,3 +4,21 @@
 @media(max-width:530px){.progress-section{padding:17px 17px 0}.progress-copy{align-items:flex-start}.progress-copy strong{font-size:12px}.progress-copy p{font-size:10px;line-height:1.5}.progress-shell small{font-size:8px;line-height:1.4;display:block}.hero h1{font-size:clamp(31px,8.5vw,41px);line-height:1.12}.hero p{font-size:12px}.eyebrow{font-size:8px;letter-spacing:.1em}.benefit-grid{grid-template-columns:1fr;gap:8px;margin-bottom:48px}.benefit{display:flex;align-items:center;min-height:0;padding:12px 14px;gap:12px}.benefit-icon{margin:0;width:34px;height:34px}.benefit h2{font-size:12px;margin-bottom:2px}.benefit p{font-size:10px}.demo>h2{font-size:25px;margin-bottom:23px}.demo-layout{display:block}.video-frame{width:min(71vw,276px);margin:0 auto}.demo-steps{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:16px 13px;margin:24px auto 0}.demo-steps>div{padding:0 0 0 31px}.demo-steps>div:before{display:none}.demo-steps span{width:24px;height:24px;font-size:8px}.demo-steps strong{font-size:11px}.demo-steps p{font-size:9px}.mechanism{gap:6px;margin-top:25px;font-size:8px}.mechanism svg{width:11px}.offer{padding:29px 21px;border-radius:18px}.offer h2{font-size:25px}.offer li{font-size:11px}.offer-price strong{font-size:47px}.accept{min-height:68px;padding:10px}.accept span{font-size:11px}.decline{font-size:10px}}
 @media(max-width:365px){main{padding-left:14px;padding-right:14px}.hero h1{font-size:30px}.hero p{font-size:11px}.mechanism{font-size:7px;gap:4px}.mechanism svg{width:10px}.offer{padding-left:16px;padding-right:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll-cue{animation:none}.accept{transition:none}}
+
+/* A etapa pós-compra tem destaque próprio, sem sugerir progresso do pagamento. */
+.progress-section{background:#9f2019;border-bottom:0;box-shadow:0 9px 26px #66251d27;padding:22px 22px 0;color:#fff}
+.progress-shell{max-width:820px}
+.progress-topline{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;color:#ffe1b0;font-size:10px;font-weight:800;letter-spacing:.17em}
+.progress-topline strong{display:inline-flex;align-items:center;justify-content:center;min-width:59px;padding:5px 10px;border:1px solid #f8d8b378;border-radius:8px;background:#ffffff18;color:#fff;font-size:16px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.progress-copy{justify-content:flex-start}
+.progress-mark{width:39px;height:39px;color:#9f2019;background:#fff9f2;border-color:#fff9f2}
+.progress-copy strong{font-size:16px}
+.progress-copy p{color:#ffece4;font-size:12px}
+.progress-track{height:16px;margin:19px 0 11px;border:2px solid #f8e3cc;background:#722017;border-radius:99px;box-shadow:inset 0 2px 5px #4d160e68,0 4px 13px #641b1640}
+.progress-track>div{background:#eab25b;box-shadow:inset 0 1px 0 #ffe0a9,2px 0 6px #f4c47d8c}
+.progress-shell small{color:#ffe4d8;font-size:10px}
+.scroll-cue{color:#9f2019;border-color:#e7baa0;background:#fff9f2}
+.demo{margin-bottom:42px}
+.benefit-grid{margin:0 auto 64px}
+@media(max-width:700px){.progress-section{padding:17px 18px 0}.progress-topline{margin-bottom:11px}.progress-copy strong{font-size:13px}.progress-copy p{font-size:10px}.progress-track{height:14px;margin:15px 0 9px}.benefit-grid{margin:0 auto 50px}}
+@media(max-width:530px){.progress-topline strong{min-width:53px;font-size:14px}.progress-shell small{font-size:9px}.demo{margin-bottom:34px}.benefit-grid{margin-bottom:49px}}
