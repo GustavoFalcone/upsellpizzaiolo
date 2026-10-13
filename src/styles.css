@@ -22,3 +22,14 @@
 .benefit-grid{margin:0 auto 64px}
 @media(max-width:700px){.progress-section{padding:17px 18px 0}.progress-topline{margin-bottom:11px}.progress-copy strong{font-size:13px}.progress-copy p{font-size:10px}.progress-track{height:14px;margin:15px 0 9px}.benefit-grid{margin:0 auto 50px}}
 @media(max-width:530px){.progress-topline strong{min-width:53px;font-size:14px}.progress-shell small{font-size:9px}.demo{margin-bottom:34px}.benefit-grid{margin-bottom:49px}}
+
+/* O vídeo real ocupa toda a moldura; a proporção vem dos metadados do arquivo. */
+.video-frame{background:#171311;aspect-ratio:auto}
+.video-frame video{width:100%;height:100%;object-fit:contain;background:#171311}
+.demo-layout--landscape{flex-direction:column;gap:25px}
+.video-frame--landscape{width:min(100%,620px)}
+.demo-layout--landscape .demo-steps{width:min(100%,620px);grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.demo-layout--landscape .demo-steps>div{padding:0 10px 0 0}
+.demo-layout--landscape .demo-steps>div:before{display:none}
+.demo-layout--landscape .demo-steps span{position:static;margin-bottom:9px}
+@media(max-width:530px){.video-frame--landscape{width:100%}.demo-layout--landscape .demo-steps{grid-template-columns:1fr 1fr}.demo-layout--landscape .demo-steps>div{padding:0 0 0 31px}.demo-layout--landscape .demo-steps span{position:absolute;margin:0}}

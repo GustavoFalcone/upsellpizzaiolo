@@ -3,8 +3,8 @@ export const upsellConfig = {
   price: 'R$39,90',
   acceptUrl: '',
   declineUrl: '',
-  videoUrl: '',
-  videoPosterUrl: '',
+  videoUrl: '/video/mini-vsl-upsell-pizza.mp4',
+  videoPosterUrl: '/video/mini-vsl-upsell-pizza-poster.jpg',
   accessStatus: 'confirmed',
   trackingParams: ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src', 'sck'],
 };

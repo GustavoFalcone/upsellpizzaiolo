@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowDown, ArrowRight, BookOpen, Camera, Check, FileDown, FolderHeart, Play, Sparkles } from 'lucide-react';
+import { ArrowDown, ArrowRight, BookOpen, Camera, Check, FileDown, FolderHeart, Sparkles } from 'lucide-react';
 import { upsellConfig, withTracking } from './config';
 import './styles.css';
 
@@ -69,25 +69,17 @@ function BenefitChips() {
 }
 
 function VerticalDemoVideo() {
-  const hasVideo = Boolean(upsellConfig.videoUrl);
-  const videoRef = useRef(null);
-  const [play, setPlay] = useState(false);
+  const [ratio, setRatio] = useState(576 / 1248);
+  const landscape = ratio > 1;
   return <section className="demo" aria-labelledby="demo-heading">
     <div className="section-kicker"><span /> DEMONSTRAÇÃO DO INFOAPP <span /></div>
     <h2 id="demo-heading">Veja como é simples criar sua própria ficha</h2>
-    <div className="demo-layout">
-      <div className="video-frame">
-        {hasVideo ? <video ref={videoRef} src={upsellConfig.videoUrl} poster={upsellConfig.videoPosterUrl || undefined} playsInline preload="metadata" controls={play} onPlay={() => setPlay(true)} aria-label="Demonstração vertical do aplicativo" /> : null}
-        {!play && <div className={`video-cover ${hasVideo ? 'video-cover--ready' : ''}`} style={upsellConfig.videoPosterUrl ? { backgroundImage: `url(${upsellConfig.videoPosterUrl})` } : undefined}>
-          <div className="video-cover-content">
-            <span className="video-cover-top">FICHÁRIO VISUAL <i /> INFOAPP</span>
-            <span className="video-cover-line" />
-            <span className="video-cover-title">Da sua pizza<br />à sua ficha.</span>
-            <button className="play-button" type="button" disabled={!hasVideo} onClick={() => videoRef.current?.play()} aria-label={hasVideo ? 'Reproduzir demonstração' : 'Demonstração em vídeo ainda não disponível'}><Play size={26} fill="currentColor" /></button>
-            <span className="video-cover-caption">{hasVideo ? 'TOQUE PARA ASSISTIR' : 'VÍDEO DEMONSTRATIVO EM BREVE'}</span>
-          </div>
-          <div className="video-cover-bottom"><span>FOTO</span><ArrowRight size={15} /><span>FICHA</span><ArrowRight size={15} /><span>PDF</span></div>
-        </div>}
+    <div className={`demo-layout ${landscape ? 'demo-layout--landscape' : ''}`}>
+      <div className={`video-frame ${landscape ? 'video-frame--landscape' : ''}`} style={{ aspectRatio: ratio }}>
+        <video src={upsellConfig.videoUrl} poster={upsellConfig.videoPosterUrl || undefined} playsInline preload="metadata" controls onLoadedMetadata={(event) => {
+          const { videoWidth, videoHeight } = event.currentTarget;
+          if (videoWidth > 0 && videoHeight > 0) setRatio(videoWidth / videoHeight);
+        }} aria-label="Demonstração do aplicativo" />
       </div>
       <div className="demo-steps" aria-label="Como funciona">
         <div><span>01</span><strong>Envie a foto</strong><p>Adicione a imagem da sua pizza.</p></div>
@@ -175,4 +167,6 @@ function App() {
   return <><UpsellProgress /><main><UpsellHero /><VerticalDemoVideo /><BenefitChips /><UpsellOffer /></main></>;
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+const root = import.meta.hot?.data.root ?? createRoot(document.getElementById('root'));
+root.render(<App />);
+if (import.meta.hot) import.meta.hot.dispose((data) => { data.root = root; });
